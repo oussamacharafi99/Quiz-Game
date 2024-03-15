@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Magra:wght@400;700&display=swap');
+:root{
+    --color-yellow:#FFC44D;
+    --color-light: #fff;
+    --color-primary : #38B6FF;
+    --color-black:black;
+    --taille-primary:50px;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Magra", sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background: url(/a739ddad-9c49-465b-b267-4381c57bfe59.jpeg) no-repeat top right/cover;
+    position: relative;
+    
+}
+header{
+    margin-top: 20px;
+    border-radius: 15px;
+    background: #ffffff2d;
+    backdrop-filter: blur(20px);
+}
+.wrapper-main{
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: #0000002e;
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: right;
+    align-items: center;
+    justify-content: space-around;
+    color: wheat;
+    padding: 10px 20px;
+    
+}
+.vide{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+}
+.img > a > img{
+    width: 100%;
+}
+.img > img {
+    width: 100%;
+}
+.img {
+    width: 45%;
+    padding: 5px;
+    background: #00000028;
+    max-height: 150px;
+    margin: 5px;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+}
+.img:hover{
+    border: 1px solid var(--color-primary);
+}
+.content{
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+    text-align: left;
+    text-align: start;
+    border-left: 5px solid var(--color-yellow);
+}
+.content > h1{
+    font-size: 60px;
+    color: var(--color-primary);
+    text-shadow: 4px 4px 5px #024d6b;
+    font-weight: 900;
+}
+.content > p {
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--color-yellow);
+    text-transform: uppercase;
+    font-weight: 300;
+}
+.st{
+    padding: 10px 20px;
+    border: 1px solid #80808051;
+    font-size: 18px ;
+    font-weight: 800;
+    background: #80808051;
+    color: #80808051;
+    border-radius: 36px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+.start{
+    padding: 10px 20px;
+    border: 1px solid var(--color-primary);
+    font-size: 18px ;
+    font-weight: 800;
+    background: #38b6ff41;
+    color: var(--color-yellow);
+    border-radius: 36px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+.start:hover{
+    background: #38B6FF;
+    color: white;
+}
