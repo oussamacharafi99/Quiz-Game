@@ -123,3 +123,42 @@ const nextQuestion = () => {
     getData();
     startTimer();
 }
+
+function go(){
+    const goTimeF = setInterval(function(){
+        forGo.innerHTML = TimeSetTimeOut--;
+        if(TimeSetTimeOut == -1){
+            stopGoTime();
+            startTimer();
+            document.getElementById("forTime").style.display = "none"
+        }
+    },1000)
+
+    function stopGoTime(){
+        clearInterval(goTimeF);
+    }
+}
+
+/*LES FONCTIONS DE LA PAGE HOME */
+function inDisabledStart(){
+    document.getElementById("checkbox").addEventListener("focus", ()=>{
+        start.disabled = false;
+        start.classList.add("start")
+    })
+    
+}
+inDisabledStart();
+
+function disabledStart(){
+    start.disabled = true;
+}
+disabledStart();
+function startGame(){
+    start.onclick = function(){
+        document.querySelector(".wrapper-main").style.display = "none";
+        document.querySelector(".wrapper-quiz").style.display = "block";
+        document.getElementById("forTime").style.display = "flex";
+        go();
+    }
+}
+startGame();
