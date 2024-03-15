@@ -104,3 +104,22 @@ function checked(){
         });
     });
 }
+function startTimer(){
+    let TGame = 10;
+    const time = setInterval(function(){
+        Res.innerHTML = TGame--;
+        if (Res.innerHTML == 0) {
+            stopTimer();
+            nextQuestion();
+        }
+    },1000);
+    function stopTimer() {
+        clearInterval(time);
+}
+}
+const nextQuestion = () => {
+    document.getElementById("Answer").innerHTML = "";
+    i++;
+    getData();
+    startTimer();
+}
