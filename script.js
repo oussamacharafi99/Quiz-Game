@@ -70,3 +70,37 @@ function getData(){
     checked();
 }
 getData();
+
+function checked(){
+    document.querySelectorAll(".R").forEach(function(element) {
+        element.addEventListener("click", function() {
+            if (this.innerHTML == arrQuizJs[i].correctAnswer) {
+                this.style.background = "green";
+                this.style.color = "white";
+                progress +=10;
+                document.getElementById("progres").style.width = progress + "%";
+
+                document.querySelectorAll(".R").forEach((e)=>{
+                    if(e.style.background != "green"){
+                        e.style.display = "none";
+                        this.style.display = "inline-block"
+                        this.disabled = true;
+                    }
+                })
+                result += 10;
+                // Res.innerHTML = result;
+            }
+            else{
+                this.style.background = "red";
+                document.querySelectorAll(".R").forEach((e)=>{
+                    if(e.style.background != "red"){
+                        e.style.display = "none";
+                        this.style.display = "inline-block"
+                        this.style.color = "white";
+                        this.disabled = true;
+                    }
+                })
+            }
+        });
+    });
+}
