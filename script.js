@@ -51,3 +51,22 @@ const arrQuizJs = [
     },
     // Ajoutez d'autres questions ici...
 ];
+let start = document.getElementById("start");
+let Res = document.getElementById("result");
+let forGo = document.getElementById("forGo");
+let i = 0;
+let result = 0;
+let progress = 10;
+let TimeSetTimeOut = 6;
+
+function getData(){
+    document.getElementById("Q").innerHTML = arrQuizJs[i].Q;
+    for(let j = 0 ; j < arrQuizJs[i].R.length;j++){
+    document.getElementById("Answer").innerHTML +=
+    `
+    <button id="R" class="R">${arrQuizJs[i].R[j]}</button>
+    ` 
+    }
+    checked();
+}
+getData();
