@@ -51,6 +51,7 @@ const arrQuizJs = [
     },
     // Ajoutez d'autres questions ici...
 ];
+const ArrNames = [];
 let start = document.getElementById("start");
 let Res = document.getElementById("result");
 let forGo = document.getElementById("forGo");
@@ -58,6 +59,8 @@ let i = 0;
 let result = 0;
 let progress = 10;
 let TimeSetTimeOut = 6;
+let trueAnsswer = 0;
+let falseAnsswer = 0;
 
 function getData(){
     document.getElementById("Q").innerHTML = arrQuizJs[i].Q;
@@ -85,6 +88,7 @@ function checked(){
                         e.style.display = "none";
                         this.style.display = "inline-block"
                         this.disabled = true;
+                        trueAnsswer++;
                     }
                 })
                 result += 10;
@@ -98,6 +102,7 @@ function checked(){
                         this.style.display = "inline-block"
                         this.style.color = "white";
                         this.disabled = true;
+                        falseAnsswer++;
                     }
                 })
             }
@@ -155,10 +160,35 @@ function disabledStart(){
 disabledStart();
 function startGame(){
     start.onclick = function(){
-        document.querySelector(".wrapper-main").style.display = "none";
-        document.querySelector(".wrapper-quiz").style.display = "block";
-        document.getElementById("forTime").style.display = "flex";
-        go();
+        document.getElementById("full-name").style.display = "flex";
     }
 }
 startGame();
+
+
+function checkName(){
+    let firstName = document.getElementById("firstName");
+    let lastName = document.getElementById("lastName");
+    let startb = document.getElementById("startb");
+    let exiteb  = document.getElementById("exiteb");
+    startb.addEventListener("click", ()=>{
+        let Fn = firstName.value;
+        let Ln = lastName.value;
+        if(Fn == "" || Ln == ""){
+            alert("Please Enter your Full Name")
+        }
+        else{
+            ArrNames.push(Fn +" "+Ln);
+            document.querySelector(".wrapper-main").style.display = "none";
+            document.querySelector(".wrapper-quiz").style.display = "block";
+            document.getElementById("forTime").style.display = "flex";
+            document.getElementById("full-name").style.display = "none";
+            go();
+        }
+    });
+    exiteb.addEventListener("click", ()=>{
+        document.getElementById("full-name").style.display = "none";
+    })
+
+}
+checkName();
