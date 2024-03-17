@@ -95,9 +95,8 @@ function checked(){
                 progress +=10;
                 trueAnsswer++;
                 reslut_answer_true.innerHTML = trueAnsswer + "/" + arrQuizJs.length;
-                progress_answer_true.style.width = trueAnsswer * 10 + "%"
+                progress_answer_true.style.width = trueAnsswer * 10 + "%";
                 document.getElementById("progres").style.width = progress + "%";
-                
 
                 document.querySelectorAll(".R").forEach((e)=>{
                     if(e.style.background != "green"){
@@ -108,6 +107,7 @@ function checked(){
                     }
                 })
                 result += 10;
+                changeCertificat();
                 
             }
             else{
@@ -159,6 +159,8 @@ function go(){
             stopGoTime();
             startTimer();
             document.getElementById("forTime").style.display = "none"
+            document.body.style.background = "url('/images/aa.png')";
+            document.body.style.backgroundSize ="cover";
         }
     },1000)
 
@@ -172,16 +174,16 @@ function inDisabledStart(){
     document.getElementById("checkbox").addEventListener("focus", ()=>{
         start.disabled = false;
         start.classList.add("start");
+        start.classList.remove("st");
     })
-    
 }
 inDisabledStart();
 
 function disabledStart(){
     start.disabled = true;
 }
-
 disabledStart();
+
 function startGame(){
     start.onclick = function(){
         document.getElementById("full-name").style.display = "flex";
@@ -226,5 +228,27 @@ function fin(){
     cer_score.innerHTML = result + "%";
     total_final.innerHTML = result + "%";
     cer_wrapper.style.display = "flex"
+}
+
+function tryAgain(){
+    let again = document.getElementById("restart");
+    again.onclick=function(){
+        location.reload()
+    }
+}
+tryAgain();
+function changeCertificat(){
+    if(result < 50){
+        document.getElementById("certificat").classList.remove("certificat");
+        document.getElementById("certificat").classList.add("certificatAgain");
+        document.getElementById("cer-score").style.color = "red";
+        document.getElementById("total-final").style.color = "red";
+    }
+    else{
+        document.getElementById("certificat").classList.add("certificat");
+        document.getElementById("certificat").classList.remove("certificatAgain");
+        document.getElementById("cer-score").style.color = "green";
+        document.getElementById("total-final").style.color = "green";
+    }
 }
 

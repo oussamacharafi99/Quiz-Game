@@ -38,7 +38,7 @@
                 <div class="img"><img src="images/js.png" alt=""></div>
                 <div class="img"><img src="images/java.png" alt=""></div>
                 <div class="img"><img src="images/c.png" alt=""></div>
-                <div class="img" id="btn-js"><a href="python.html"><img src="images/py.png" alt=""></a></div>
+                <div class="img" id="btn-js"><img src="images/py.png" alt=""></div>
             </div>
             <div class="content">
                 <h1>WELCOME !</h1>
@@ -95,7 +95,7 @@
 
     <div class="cer-wrapper">
         <div class="cer-main">
-            <div class="certificat">
+            <div class="certificat" id="certificat">
                 <div class="cer-content">
                     <h1 id="cer-name">
                         --------
@@ -106,21 +106,22 @@
                 </div>
             </div>
             <div class="scoreFinal">
-                <h1 class="result-final">Resulte</h1>
+                <h1 class="result-final">Result</h1>
                 <h2 id="total-final">--</h2>
 
                 <div class="wrapper-progress">
+                    <h6 class="cer-score-title">True Answer</h6>
                     <div class="true-answer">
                         <h1 id="progress-answer-true"></h1>
-                        <p id="reslut-answer-true"></p>
+                        <p id="reslut-answer-true">--</p>
                     </div>
-
+                    <h6 class="cer-score-title">False Answer</h6>
                     <div class="false-answer">
                         <h1 id="progress-answer-false"></h1>
-                        <p id="reslut-answer-false"></p>
+                        <p id="reslut-answer-false">--</p>
                     </div>
                 </div>
-                <button class="btn btn-outline-dark">Restart</button>
+                <button class="btn btn-outline-dark mt-3" id="restart">Restart</button>
             </div>
         </div>
 
