@@ -63,13 +63,19 @@ let trueAnsswer = 0;
 let falseAnsswer = 0;
 
 function getData(){
-    document.getElementById("Q").innerHTML = arrQuizJs[i].Q;
+    if(i <= arrQuizJs.length - 1){
+        document.getElementById("Q").innerHTML = arrQuizJs[i].Q;
     for(let j = 0 ; j < arrQuizJs[i].R.length;j++){
     document.getElementById("Answer").innerHTML +=
     `
     <button id="R" class="R">${arrQuizJs[i].R[j]}</button>
     ` 
     }
+    }else{
+        // document.getElementById("js").style.display = "none"
+        
+    }
+    
     checked();
 }
 getData();
@@ -111,19 +117,23 @@ function checked(){
 }
 function startTimer(){
     let TGame = 10;
+    if(i >= arrQuizJs.length - 1){
+        TGame = 0;
+    }
     const time = setInterval(function(){
         Res.innerHTML = TGame--;
         if (Res.innerHTML == 0) {
             stopTimer();
             nextQuestion();
         }
-    },1000);
+    },100);
     function stopTimer() {
         clearInterval(time);
 }
 }
 const nextQuestion = () => {
     document.getElementById("Answer").innerHTML = "";
+    document.getElementById("Q").innerHTML = ""
     i++;
     getData();
     startTimer();
@@ -148,7 +158,7 @@ function go(){
 function inDisabledStart(){
     document.getElementById("checkbox").addEventListener("focus", ()=>{
         start.disabled = false;
-        start.classList.add("start")
+        start.classList.add("start");
     })
     
 }
@@ -157,6 +167,7 @@ inDisabledStart();
 function disabledStart(){
     start.disabled = true;
 }
+
 disabledStart();
 function startGame(){
     start.onclick = function(){
@@ -164,7 +175,6 @@ function startGame(){
     }
 }
 startGame();
-
 
 function checkName(){
     let firstName = document.getElementById("firstName");
