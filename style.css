@@ -432,7 +432,7 @@ header{
         width: 45%;
         color:#024d6b;
         font-weight:800;
-        font-size: 16px;
+        font-size: 13px;
         border: 2px solid transparent;
         margin: 3px;
         transition: .5s;
@@ -490,6 +490,9 @@ header{
         font-size: 12px;
         color: rgb(216, 216, 216);
         text-align: justify;
+    }
+    #Q{
+        font-size: 16px;
     }
 }
 
