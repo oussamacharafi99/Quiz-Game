@@ -52,18 +52,22 @@ const arrQuizJs = [
     // Ajoutez d'autres questions ici...
 ];
 const ArrNames = [];
+let progress_answer_true = document.getElementById("progress-answer-true");
+let progress_answer_false = document.getElementById("progress-answer-false");
+let reslut_answer_true = document.getElementById("reslut-answer-true");
+let reslut_answer_false = document.getElementById("reslut-answer-false");
 let start = document.getElementById("start");
 let Res = document.getElementById("result");
 let forGo = document.getElementById("forGo");
 let i = 0;
 let result = 0;
 let progress = 10;
-let TimeSetTimeOut = 6;
+let TimeSetTimeOut = 3;
 let trueAnsswer = 0;
 let falseAnsswer = 0;
 
 function getData(){
-    if(i <= arrQuizJs.length - 1){
+    if(i <= arrQuizJs.length -1){
         document.getElementById("Q").innerHTML = arrQuizJs[i].Q;
     for(let j = 0 ; j < arrQuizJs[i].R.length;j++){
     document.getElementById("Answer").innerHTML +=
@@ -72,8 +76,10 @@ function getData(){
     ` 
     }
     }else{
-        // document.getElementById("js").style.display = "none"
-        
+        if(i > arrQuizJs.length - 1){
+            document.getElementById("js").style.display = "none"
+            fin()
+        }
     }
     
     checked();
@@ -87,20 +93,27 @@ function checked(){
                 this.style.background = "green";
                 this.style.color = "white";
                 progress +=10;
+                trueAnsswer++;
+                reslut_answer_true.innerHTML = trueAnsswer + "/" + arrQuizJs.length;
+                progress_answer_true.style.width = trueAnsswer * 10 + "%"
                 document.getElementById("progres").style.width = progress + "%";
+                
 
                 document.querySelectorAll(".R").forEach((e)=>{
                     if(e.style.background != "green"){
                         e.style.display = "none";
                         this.style.display = "inline-block"
                         this.disabled = true;
-                        trueAnsswer++;
+                        console.log("this is treu answer" + trueAnsswer);
                     }
                 })
                 result += 10;
-                // Res.innerHTML = result;
+                
             }
             else{
+                falseAnsswer +=1;
+                reslut_answer_false.innerHTML = falseAnsswer + "/" + arrQuizJs.length;
+                progress_answer_false.style.width = falseAnsswer * 10 + "%"
                 this.style.background = "red";
                 document.querySelectorAll(".R").forEach((e)=>{
                     if(e.style.background != "red"){
@@ -108,7 +121,7 @@ function checked(){
                         this.style.display = "inline-block"
                         this.style.color = "white";
                         this.disabled = true;
-                        falseAnsswer++;
+                        console.log("this is false answer" + falseAnsswer);
                     }
                 })
             }
@@ -117,7 +130,7 @@ function checked(){
 }
 function startTimer(){
     let TGame = 10;
-    if(i >= arrQuizJs.length - 1){
+    if(i == arrQuizJs.length){
         TGame = 0;
     }
     const time = setInterval(function(){
@@ -126,7 +139,7 @@ function startTimer(){
             stopTimer();
             nextQuestion();
         }
-    },100);
+    },500);
     function stopTimer() {
         clearInterval(time);
 }
@@ -202,3 +215,16 @@ function checkName(){
 
 }
 checkName();
+
+function fin(){
+    let cer_wrapper = document.querySelector(".cer-wrapper");
+    let cer_name = document.getElementById("cer-name");
+    let cer_score = document.getElementById("cer-score");
+    let total_final = document.getElementById("total-final");
+
+    cer_name.innerHTML = ArrNames[0];
+    cer_score.innerHTML = result + "%";
+    total_final.innerHTML = result + "%";
+    cer_wrapper.style.display = "flex"
+}
+
